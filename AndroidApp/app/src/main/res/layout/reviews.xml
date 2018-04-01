@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.ReviewsActivity">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.huebeiro.reviewyourtour.viewmodel.ReviewsViewModel" />
+        <variable
+            name="view"
+            type="com.huebeiro.reviewyourtour.view.ReviewsActivity" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/mainView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/viewFilters"
+            android:background="@color/colorPrimary"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <CheckBox
+                android:id="@+id/checkboxLanguage"
+                android:textColor="@android:color/white"
+                android:onCheckedChanged="@{() -> view.onFiltersChanged()}"
+                android:text="@string/reviews_filter_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewFilters"
+            app:onRefreshListener="@{() -> view.swipeRefresh()}"
+            app:refreshing="@{viewModel.loading}">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/listReviews"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                app:clickHandler="@{view.clickHandler}"
+                app:itemViewBinder="@{view.itemViewBinder}"
+                app:items="@{viewModel.reviews}" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabAddReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> view.addReview()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="16dp"
+            app:srcCompat="@drawable/ic_action_add" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

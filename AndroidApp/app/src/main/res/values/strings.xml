@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ReviewYourTour</string>
+    <string name="reviews_activity_title">All Reviews</string>
+    <string name="reviews_filter_language">Show reviews in my language only</string>
+    <string name="reviews_activity_error">It was not possible to retrieve the reviews.</string>
+    <string name="addreview_activity_title">New Review</string>
+    <string name="addreview_label_title">Title</string>
+    <string name="addreview_label_message">Message</string>
+    <string name="addreview_label_rating">Rating</string>
+    <string name="addreview_label_country">Country</string>
+    <string name="addreview_label_name">Name</string>
+    <string name="addreview_btn_send">Send Review</string>
+    <string name="addreview_btn_cancel">Cancel</string>
+    <string name="addreview_error_network">Something wrong happened while sending your review.</string>
+    <string name="addreview_error_fields">Please, fill in the fields correctly.</string>
+</resources>
